@@ -26,12 +26,14 @@ pub type Dynamic
 ///
 @external(erlang, "gleam_stdlib", "classify_dynamic")
 @external(javascript, "../gleam_stdlib.mjs", "classify_dynamic")
+@external(lua, "../gleam_stdlib.lua", "classify_dynamic")
 pub fn classify(data: Dynamic) -> String
 
 /// Create a dynamic value from a bool.
 ///
 @external(erlang, "gleam_stdlib", "identity")
 @external(javascript, "../gleam_stdlib.mjs", "identity")
+@external(lua, "../gleam_stdlib.lua", "identity")
 pub fn bool(a: Bool) -> Dynamic
 
 /// Create a dynamic value from a string.
@@ -40,30 +42,35 @@ pub fn bool(a: Bool) -> Dynamic
 ///
 @external(erlang, "gleam_stdlib", "identity")
 @external(javascript, "../gleam_stdlib.mjs", "identity")
+@external(lua, "../gleam_stdlib.lua", "identity")
 pub fn string(a: String) -> Dynamic
 
 /// Create a dynamic value from a float.
 ///
 @external(erlang, "gleam_stdlib", "identity")
 @external(javascript, "../gleam_stdlib.mjs", "identity")
+@external(lua, "../gleam_stdlib.lua", "identity")
 pub fn float(a: Float) -> Dynamic
 
 /// Create a dynamic value from an int.
 ///
 @external(erlang, "gleam_stdlib", "identity")
 @external(javascript, "../gleam_stdlib.mjs", "identity")
+@external(lua, "../gleam_stdlib.lua", "identity")
 pub fn int(a: Int) -> Dynamic
 
 /// Create a dynamic value from a bit array.
 ///
 @external(erlang, "gleam_stdlib", "identity")
 @external(javascript, "../gleam_stdlib.mjs", "identity")
+@external(lua, "../gleam_stdlib.lua", "identity")
 pub fn bit_array(a: BitArray) -> Dynamic
 
 /// Create a dynamic value from a list.
 ///
 @external(erlang, "gleam_stdlib", "identity")
 @external(javascript, "../gleam_stdlib.mjs", "identity")
+@external(lua, "../gleam_stdlib.lua", "identity")
 pub fn list(a: List(Dynamic)) -> Dynamic
 
 /// Create a dynamic value from a list, converting it to a sequential runtime
@@ -73,6 +80,7 @@ pub fn list(a: List(Dynamic)) -> Dynamic
 ///
 @external(erlang, "erlang", "list_to_tuple")
 @external(javascript, "../gleam_stdlib.mjs", "list_to_array")
+@external(lua, "../gleam_stdlib.lua", "list_to_array")
 pub fn array(a: List(Dynamic)) -> Dynamic
 
 /// Create a dynamic value made of an unordered series of keys and values, where
@@ -96,4 +104,5 @@ pub fn nil() -> Dynamic {
 
 @external(erlang, "gleam_stdlib", "identity")
 @external(javascript, "../gleam_stdlib.mjs", "identity")
+@external(lua, "../gleam_stdlib.lua", "identity")
 fn cast(a: anything) -> Dynamic

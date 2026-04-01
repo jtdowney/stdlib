@@ -8,24 +8,28 @@ import gleam/string
 ///
 @external(erlang, "gleam_stdlib", "identity")
 @external(javascript, "../gleam_stdlib.mjs", "bit_array_from_string")
+@external(lua, "../gleam_stdlib.lua", "bit_array_from_string")
 pub fn from_string(x: String) -> BitArray
 
 /// Returns an integer which is the number of bits in the bit array.
 ///
 @external(erlang, "erlang", "bit_size")
 @external(javascript, "../gleam_stdlib.mjs", "bit_array_bit_size")
+@external(lua, "../gleam_stdlib.lua", "bit_array_bit_size")
 pub fn bit_size(x: BitArray) -> Int
 
 /// Returns an integer which is the number of bytes in the bit array.
 ///
 @external(erlang, "erlang", "byte_size")
 @external(javascript, "../gleam_stdlib.mjs", "bit_array_byte_size")
+@external(lua, "../gleam_stdlib.lua", "bit_array_byte_size")
 pub fn byte_size(x: BitArray) -> Int
 
 /// Pads a bit array with zeros so that it is a whole number of bytes.
 ///
 @external(erlang, "gleam_stdlib", "bit_array_pad_to_bytes")
 @external(javascript, "../gleam_stdlib.mjs", "bit_array_pad_to_bytes")
+@external(lua, "../gleam_stdlib.lua", "bit_array_pad_to_bytes")
 pub fn pad_to_bytes(x: BitArray) -> BitArray
 
 /// Creates a new bit array by joining two bit arrays.
@@ -51,6 +55,7 @@ pub fn append(to first: BitArray, suffix second: BitArray) -> BitArray {
 ///
 @external(erlang, "gleam_stdlib", "bit_array_slice")
 @external(javascript, "../gleam_stdlib.mjs", "bit_array_slice")
+@external(lua, "../gleam_stdlib.lua", "bit_array_slice")
 pub fn slice(
   from string: BitArray,
   at position: Int,
@@ -80,11 +85,20 @@ fn is_utf8_loop(bits: BitArray) -> Bool {
   }
 }
 
+@target(lua)
+fn is_utf8_loop(bits: BitArray) -> Bool {
+  case to_string(bits) {
+    Ok(_) -> True
+    Error(_) -> False
+  }
+}
+
 /// Converts a bit array to a string.
 ///
 /// Returns an error if the bit array is invalid UTF-8 data.
 ///
 @external(javascript, "../gleam_stdlib.mjs", "bit_array_to_string")
+@external(lua, "../gleam_stdlib.lua", "bit_array_to_string")
 pub fn to_string(bits: BitArray) -> Result(String, Nil) {
   case is_utf8(bits) {
     True -> Ok(unsafe_to_string(bits))
@@ -106,6 +120,7 @@ fn unsafe_to_string(a: BitArray) -> String
 ///
 @external(erlang, "gleam_stdlib", "bit_array_concat")
 @external(javascript, "../gleam_stdlib.mjs", "bit_array_concat")
+@external(lua, "../gleam_stdlib.lua", "bit_array_concat")
 pub fn concat(bit_arrays: List(BitArray)) -> BitArray
 
 /// Encodes a BitArray into a base 64 encoded string.
@@ -115,6 +130,7 @@ pub fn concat(bit_arrays: List(BitArray)) -> BitArray
 ///
 @external(erlang, "gleam_stdlib", "base64_encode")
 @external(javascript, "../gleam_stdlib.mjs", "base64_encode")
+@external(lua, "../gleam_stdlib.lua", "base64_encode")
 pub fn base64_encode(input: BitArray, padding: Bool) -> String
 
 /// Decodes a base 64 encoded string into a `BitArray`.
@@ -129,6 +145,7 @@ pub fn base64_decode(encoded: String) -> Result(BitArray, Nil) {
 
 @external(erlang, "gleam_stdlib", "base64_decode")
 @external(javascript, "../gleam_stdlib.mjs", "base64_decode")
+@external(lua, "../gleam_stdlib.lua", "base64_decode")
 fn decode64(a: String) -> Result(BitArray, Nil)
 
 /// Encodes a `BitArray` into a base 64 encoded string with URL and filename
@@ -161,12 +178,14 @@ pub fn base64_url_decode(encoded: String) -> Result(BitArray, Nil) {
 ///
 @external(erlang, "gleam_stdlib", "base16_encode")
 @external(javascript, "../gleam_stdlib.mjs", "base16_encode")
+@external(lua, "../gleam_stdlib.lua", "base16_encode")
 pub fn base16_encode(input: BitArray) -> String
 
 /// Decodes a base 16 encoded string into a `BitArray`.
 ///
 @external(erlang, "gleam_stdlib", "base16_decode")
 @external(javascript, "../gleam_stdlib.mjs", "base16_decode")
+@external(lua, "../gleam_stdlib.lua", "base16_decode")
 pub fn base16_decode(input: String) -> Result(BitArray, Nil)
 
 /// Converts a bit array to a string containing the decimal value of each byte.
@@ -259,6 +278,7 @@ pub fn compare(a: BitArray, with b: BitArray) -> order.Order {
 
 @external(erlang, "gleam_stdlib", "bit_array_to_int_and_size")
 @external(javascript, "../gleam_stdlib.mjs", "bit_array_to_int_and_size")
+@external(lua, "../gleam_stdlib.lua", "bit_array_to_int_and_size")
 fn bit_array_to_int_and_size(a: BitArray) -> #(Int, Int)
 
 /// Checks whether the first `BitArray` starts with the second one.
@@ -270,6 +290,7 @@ fn bit_array_to_int_and_size(a: BitArray) -> #(Int, Int)
 /// ```
 ///
 @external(javascript, "../gleam_stdlib.mjs", "bit_array_starts_with")
+@external(lua, "../gleam_stdlib.lua", "bit_array_starts_with")
 pub fn starts_with(bits: BitArray, prefix: BitArray) -> Bool {
   let prefix_size = bit_size(prefix)
 

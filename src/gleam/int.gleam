@@ -95,6 +95,7 @@ pub fn square_root(x: Int) -> Result(Float, Nil) {
 ///
 @external(erlang, "gleam_stdlib", "parse_int")
 @external(javascript, "../gleam_stdlib.mjs", "parse_int")
+@external(lua, "../gleam_stdlib.lua", "parse_int")
 pub fn parse(string: String) -> Result(Int, Nil)
 
 /// Parses a given string as an int in a given base if possible.
@@ -131,6 +132,7 @@ pub fn base_parse(string: String, base: Int) -> Result(Int, Nil) {
 
 @external(erlang, "gleam_stdlib", "int_from_base_string")
 @external(javascript, "../gleam_stdlib.mjs", "int_from_base_string")
+@external(lua, "../gleam_stdlib.lua", "int_from_base_string")
 fn do_base_parse(a: String, b: Int) -> Result(Int, Nil)
 
 /// Prints a given int to a string.
@@ -143,6 +145,7 @@ fn do_base_parse(a: String, b: Int) -> Result(Int, Nil)
 ///
 @external(erlang, "erlang", "integer_to_binary")
 @external(javascript, "../gleam_stdlib.mjs", "to_string")
+@external(lua, "../gleam_stdlib.lua", "to_string")
 pub fn to_string(x: Int) -> String
 
 /// Prints a given int to a string using the base number provided.
@@ -180,6 +183,7 @@ pub fn to_base_string(x: Int, base: Int) -> Result(String, Nil) {
 
 @external(erlang, "erlang", "integer_to_binary")
 @external(javascript, "../gleam_stdlib.mjs", "int_to_base_string")
+@external(lua, "../gleam_stdlib.lua", "int_to_base_string")
 fn do_to_base_string(a: Int, b: Int) -> String
 
 /// Prints a given int to a string using base-2.
@@ -248,6 +252,7 @@ pub fn to_base36(x: Int) -> String {
 ///
 @external(erlang, "erlang", "float")
 @external(javascript, "../gleam_stdlib.mjs", "identity")
+@external(lua, "../gleam_stdlib.lua", "identity")
 pub fn to_float(x: Int) -> Float
 
 /// Restricts an int between two bounds.
@@ -692,6 +697,7 @@ pub fn subtract(a: Int, b: Int) -> Int {
 ///
 @external(erlang, "erlang", "band")
 @external(javascript, "../gleam_stdlib.mjs", "bitwise_and")
+@external(lua, "../gleam_stdlib.lua", "bitwise_and")
 pub fn bitwise_and(x: Int, y: Int) -> Int
 
 /// Calculates the bitwise NOT of its argument.
@@ -709,6 +715,7 @@ pub fn bitwise_and(x: Int, y: Int) -> Int
 ///
 @external(erlang, "erlang", "bnot")
 @external(javascript, "../gleam_stdlib.mjs", "bitwise_not")
+@external(lua, "../gleam_stdlib.lua", "bitwise_not")
 pub fn bitwise_not(x: Int) -> Int
 
 /// Calculates the bitwise OR of its arguments.
@@ -726,6 +733,7 @@ pub fn bitwise_not(x: Int) -> Int
 ///
 @external(erlang, "erlang", "bor")
 @external(javascript, "../gleam_stdlib.mjs", "bitwise_or")
+@external(lua, "../gleam_stdlib.lua", "bitwise_or")
 pub fn bitwise_or(x: Int, y: Int) -> Int
 
 /// Calculates the bitwise XOR of its arguments.
@@ -743,6 +751,7 @@ pub fn bitwise_or(x: Int, y: Int) -> Int
 ///
 @external(erlang, "erlang", "bxor")
 @external(javascript, "../gleam_stdlib.mjs", "bitwise_exclusive_or")
+@external(lua, "../gleam_stdlib.lua", "bitwise_exclusive_or")
 pub fn bitwise_exclusive_or(x: Int, y: Int) -> Int
 
 /// Calculates the result of an arithmetic left bitshift.
@@ -760,6 +769,7 @@ pub fn bitwise_exclusive_or(x: Int, y: Int) -> Int
 ///
 @external(erlang, "erlang", "bsl")
 @external(javascript, "../gleam_stdlib.mjs", "bitwise_shift_left")
+@external(lua, "../gleam_stdlib.lua", "bitwise_shift_left")
 pub fn bitwise_shift_left(x: Int, y: Int) -> Int
 
 /// Calculates the result of an arithmetic right bitshift.
@@ -777,6 +787,7 @@ pub fn bitwise_shift_left(x: Int, y: Int) -> Int
 ///
 @external(erlang, "erlang", "bsr")
 @external(javascript, "../gleam_stdlib.mjs", "bitwise_shift_right")
+@external(lua, "../gleam_stdlib.lua", "bitwise_shift_right")
 pub fn bitwise_shift_right(x: Int, y: Int) -> Int
 
 /// Run a function for each int between ints `from` and `to`.

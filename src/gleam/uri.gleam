@@ -514,10 +514,12 @@ fn parse_fragment(rest: String, pieces: Uri) -> Result(Uri, Nil) {
 // `fold_codeunits`-style loop and a state machine.
 @external(erlang, "gleam_stdlib", "string_pop_codeunit")
 @external(javascript, "../gleam_stdlib.mjs", "pop_codeunit")
+@external(lua, "../gleam_stdlib.lua", "pop_codeunit")
 fn pop_codeunit(str: String) -> #(Int, String)
 
 @external(erlang, "binary", "part")
 @external(javascript, "../gleam_stdlib.mjs", "string_codeunit_slice")
+@external(lua, "../gleam_stdlib.lua", "string_codeunit_slice")
 fn codeunit_slice(str: String, at_index from: Int, length length: Int) -> String
 
 /// Parses an URL-encoded query string into a list of key value pairs.
@@ -533,6 +535,7 @@ fn codeunit_slice(str: String, at_index from: Int, length length: Int) -> String
 ///
 @external(erlang, "gleam_stdlib", "parse_query")
 @external(javascript, "../gleam_stdlib.mjs", "parse_query")
+@external(lua, "../gleam_stdlib.lua", "parse_query")
 pub fn parse_query(query: String) -> Result(List(#(String, String)), Nil)
 
 /// Encodes a list of key value pairs as a URI query string.
@@ -573,6 +576,7 @@ fn percent_encode_query(part: String) -> String {
 ///
 @external(erlang, "gleam_stdlib", "percent_encode")
 @external(javascript, "../gleam_stdlib.mjs", "percent_encode")
+@external(lua, "../gleam_stdlib.lua", "percent_encode")
 pub fn percent_encode(value: String) -> String
 
 /// Decodes a percent encoded string.
@@ -585,6 +589,7 @@ pub fn percent_encode(value: String) -> String
 ///
 @external(erlang, "gleam_stdlib", "percent_decode")
 @external(javascript, "../gleam_stdlib.mjs", "percent_decode")
+@external(lua, "../gleam_stdlib.lua", "percent_decode")
 pub fn percent_decode(value: String) -> Result(String, Nil)
 
 /// Splits the path section of a URI into its constituent segments.

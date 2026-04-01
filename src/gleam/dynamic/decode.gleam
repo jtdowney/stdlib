@@ -433,6 +433,7 @@ fn index(
 
 @external(erlang, "gleam_stdlib", "index")
 @external(javascript, "../../gleam_stdlib.mjs", "index")
+@external(lua, "../../gleam_stdlib.lua", "index")
 fn bare_index(data: Dynamic, key: anything) -> Result(Option(Dynamic), String)
 
 fn push_path(
@@ -636,6 +637,7 @@ fn decode_string(data: Dynamic) -> #(String, List(DecodeError)) {
 }
 
 @external(javascript, "../../gleam_stdlib.mjs", "string")
+@external(lua, "../../gleam_stdlib.lua", "string")
 fn dynamic_string(from data: Dynamic) -> Result(String, String) {
   case dynamic_bit_array(data) {
     Ok(data) ->
@@ -693,6 +695,7 @@ fn decode_int(data: Dynamic) -> #(Int, List(DecodeError)) {
 
 @external(erlang, "gleam_stdlib", "int")
 @external(javascript, "../../gleam_stdlib.mjs", "int")
+@external(lua, "../../gleam_stdlib.lua", "int")
 fn dynamic_int(data: Dynamic) -> Result(Int, Int)
 
 /// A decoder that decodes `Float` values.
@@ -719,6 +722,7 @@ fn decode_float(data: Dynamic) -> #(Float, List(DecodeError)) {
 
 @external(erlang, "gleam_stdlib", "float")
 @external(javascript, "../../gleam_stdlib.mjs", "float")
+@external(lua, "../../gleam_stdlib.lua", "float")
 fn dynamic_float(data: Dynamic) -> Result(Float, Float)
 
 /// A decoder that decodes `Dynamic` values. This decoder never returns an error.
@@ -753,6 +757,7 @@ fn decode_bit_array(data: Dynamic) -> #(BitArray, List(DecodeError)) {
 
 @external(erlang, "gleam_stdlib", "bit_array")
 @external(javascript, "../../gleam_stdlib.mjs", "bit_array")
+@external(lua, "../../gleam_stdlib.lua", "bit_array")
 fn dynamic_bit_array(data: Dynamic) -> Result(BitArray, BitArray)
 
 /// A decoder that decodes lists where all elements are decoded with a given
@@ -777,6 +782,7 @@ pub fn list(of inner: Decoder(a)) -> Decoder(List(a)) {
 
 @external(erlang, "gleam_stdlib", "list")
 @external(javascript, "../../gleam_stdlib.mjs", "list")
+@external(lua, "../../gleam_stdlib.lua", "list")
 fn decode_list(
   data: Dynamic,
   item: fn(Dynamic) -> #(t, List(DecodeError)),
@@ -849,6 +855,7 @@ fn fold_dict(
 
 @external(erlang, "gleam_stdlib", "dict")
 @external(javascript, "../../gleam_stdlib.mjs", "dict")
+@external(lua, "../../gleam_stdlib.lua", "dict")
 fn decode_dict(data: Dynamic) -> Result(Dict(Dynamic, Dynamic), Nil)
 
 /// A decoder that decodes nullable values of a type decoded by with a given
@@ -1101,8 +1108,10 @@ pub fn recursive(inner: fn() -> Decoder(a)) -> Decoder(a) {
 
 @external(erlang, "gleam_stdlib", "identity")
 @external(javascript, "../../gleam_stdlib.mjs", "identity")
+@external(lua, "../../gleam_stdlib.lua", "identity")
 fn cast(a: anything) -> Dynamic
 
 @external(erlang, "gleam_stdlib", "is_null")
 @external(javascript, "../../gleam_stdlib.mjs", "is_null")
+@external(lua, "../../gleam_stdlib.lua", "is_null")
 fn is_null(a: Dynamic) -> Bool
