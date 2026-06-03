@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Fixed a bug where `string.drop_start` would return incorrect results on
+  JavaScript when the string contained multi-byte characters.
+
 ## v1.0.5 - 2026-08-06
 
 - Fixed a bug where `bit_array.pad_to_bytes` could crash.
